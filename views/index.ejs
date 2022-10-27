@@ -1,0 +1,39 @@
+<!-- include header -->
+<%- include('include/_header') %>
+
+    <!-- header -->
+    <header id="header">User Management System</header>
+
+    <!-- main site -->
+    <main id="site-main">
+        <div class="container">
+            <div class="add">
+                <a href="/add_user" class="add_btn">
+                    <span class="text-gradient">New User <i class="fa-solid fa-user"></i></span>
+                </a>
+            </div>
+
+            <!-- form handling -->
+            <form action="/" method="post" id="user_form">
+                <table class="table">
+                    <thead class="thead">
+                        <tr>
+                            <th id="id_table">Id</th>
+                            <th>Name</th>
+                            <th id="email">Email</th>
+                            <th>Gender</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- include show -->
+                        <%- include('include/_show') %>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </main>
+
+<!-- include  footer -->
+<%- include('include/_footer') %>

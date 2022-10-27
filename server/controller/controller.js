@@ -20,9 +20,8 @@ exports.create = (req, res) => {
   user
     .save(user)
     .then((data) => {
-      //   res.send(data);
-      //   res.render("add_user");
-      //   res.render("index");
+      res.send(data);
+      res.render("/add_user");
     })
     .catch((err) => {
       res.status(500).send({
@@ -68,13 +67,15 @@ exports.find = (req, res) => {
     //Display All
     Userdb.find()
       .then((user) => {
-        res.send(user);
+        // res.send(user)
       })
       .catch((err) => {
-        res.status(500).send({
-          message:
-            err.message || "Error occur while retriving user information",
-        });
+        res
+          .status(500)
+          .send({
+            message:
+              err.message || "Error occur while retriving user information",
+          });
       });
   }
 };
@@ -89,9 +90,11 @@ exports.update = (req, res) => {
   Userdb.findByIdAndUpdate(id, req.body, { useFindAndModify: true })
     .then((data) => {
       if (!data) {
-        res.status(404).send({
-          message: `cannot update user with ${id},Maybe user not found`,
-        });
+        res
+          .status(404)
+          .send({
+            message: `cannot update user with ${id},Maybe user not found`,
+          });
       } else {
         res.send(data);
       }
